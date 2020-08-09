@@ -1,0 +1,100 @@
+﻿<Window x:Class="ColorPicker.Views.TaskThreeWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialdesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ColorPickerLibrary.Views;assembly=ColorPickerLibrary"
+             mc:Ignorable="d" d:DesignHeight="450" 
+        d:DesignWidth="800"  
+             WindowState="Maximized" MinHeight="500" MinWidth="800" Loaded="Window_Loaded">
+
+    <Border BorderThickness="1" BorderBrush="AliceBlue" Padding="20"  SnapsToDevicePixels="True" Background="{StaticResource MyGridBrushResource}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Width="100" Grid.Row="1" Margin="15 0 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="18"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Min"/>
+                <TextBox Grid.Row="2" Text="{Binding Min,  Mode=TwoWay,FallbackValue=100, UpdateSourceTrigger=PropertyChanged}" Height="18" VerticalAlignment="Top" x:Name="maxTXT"/>
+                <TextBlock Grid.Row="4" Text="Max"/>
+                <TextBox Grid.Row="6" Text="{Binding Max,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, FallbackValue=7000}"/>
+            </Grid>
+            <Border  Grid.Column="1" Grid.Row="1" SnapsToDevicePixels="True">
+                <Canvas x:Name="canvas"  Width="25" SnapsToDevicePixels="True">
+
+                </Canvas>
+            </Border>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="3" Orientation="Horizontal">
+                <Button Command="{Binding AddSlider}" 
+                     Width="30" Margin="0 0 10 0">
+                    <materialdesign:PackIcon Kind="TagAdd"  HorizontalAlignment="Left" Height="19" />
+                </Button>
+                <Button x:Name="removeBtn" Command="{Binding RemoveSlider}" 
+                     Width="30" >
+                    <materialdesign:PackIcon Kind="FormatColorFill"  HorizontalAlignment="Left" Height="19" />
+                </Button>
+            </StackPanel>
+            <Grid Grid.Column="3" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="32*"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="89*"/>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="90*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Color" HorizontalAlignment="Right" Grid.Column="3"/>
+                <Button x:Name="colorBtn" Command="{Binding LoadColorDialogWindowCommand}" Grid.Column="7" Width="40" HorizontalAlignment="Stretch"  Height="23" Margin="25,0" VerticalAlignment="Bottom">
+                    <materialdesign:PackIcon Kind="FormatColorFill" IsEnabled="False" Foreground="{Binding GenerateColorFromPosition, UpdateSourceTrigger=PropertyChanged}"/>
+                </Button>
+                <TextBlock Text="Position" Grid.Row="2" HorizontalAlignment="Right" Grid.ColumnSpan="3" Grid.Column="2" Margin="0,0,5,0"/>
+                <local:CustomSpinner x:Name="Posiion"  Grid.Column="7" Grid.Row="2" KeyUp="Posiion_KeyUp"/>
+                <TextBlock Text="Transparency" Grid.Row="4" HorizontalAlignment="Right" Grid.ColumnSpan="3" Grid.Column="2" Margin="0,0,5,0"/>
+                <Slider x:Name="SL1" TickFrequency="5" Orientation="Horizontal" TickPlacement="BottomRight"  Value="{Binding ElementName=tranTXT, Path=Value}" Grid.Column="5" Grid.Row="4"  Minimum="0" Maximum="100"/>
+                <local:CustomSpinner x:Name="tranTXT" Grid.Column="7" Grid.Row="4" Value="{Binding Transparency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="Brightness" Grid.Row="6" HorizontalAlignment="Right" Grid.ColumnSpan="3" Grid.Column="2" Margin="0,0,5,0"/>
+                <Slider x:Name="SL2" TickFrequency="5" Orientation="Horizontal" TickPlacement="BottomRight"  Value="{Binding ElementName=txtslider2, Path=Value}" Grid.Column="5" Grid.Row="6"  Minimum="0" Maximum="100"/>
+                <local:CustomSpinner x:Name="txtslider2" Grid.Column="7" Grid.Row="6" Value="{Binding Brightness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 <TextBlock FontStyle="Oblique" FontWeight="DemiBold" Text="Target Range:" Width="100" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="9"/>
+                <TextBox Width="100" Text="{Binding RangeNumber,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,FallbackValue=350}" Grid.Column="2" Grid.Row="11"  Grid.ColumnSpan="3"/>
+                <Rectangle Grid.Row="9" Grid.Column="5"  Grid.RowSpan="3" Grid.ColumnSpan="4" Fill="{Binding GenerateColorFromPosition,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" Height="50"></Rectangle>
+
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>

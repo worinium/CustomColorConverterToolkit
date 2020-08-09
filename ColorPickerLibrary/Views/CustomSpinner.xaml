@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ColorPickerLibrary.Views.CustomSpinner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  mc:Ignorable="d"
+             Name="ThisUserControl">
+    <Grid Height="25" Width="100">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="ColorValue" Grid.Column="0" 
+                 Text="{Binding ElementName=ThisUserControl, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  TextChanged="ColorValue_TextChanged" PreviewTextInput="ColorValue_PreviewTextInput"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" x:Name="Increase" Click="Increase_Click">
+                <Image Source="/Images/CaretUp.png"/>
+            </Button>
+            <Button Grid.Row="1" x:Name="Decrease" Click="Decrease_Click" PreviewKeyDown="value_PreviewKeyDown">
+                <Image Source="/Images/CaretDown.png"/>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ColorPickerLibrary.Views.CMYK"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ColorPickerLibrary.Views"
+             mc:Ignorable="d" Background="Transparent">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="auto"/> 
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" Grid.Column="0" Grid.Row="0">
+            <Bold><Underline>C</Underline>yan:</Bold></TextBlock>
+        <TextBlock VerticalAlignment="Center" Grid.Column="0" Grid.Row="2">
+            <Bold><Underline>M</Underline>genta:</Bold></TextBlock>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" Grid.Row="4">
+            <Bold><Underline>Y</Underline>ellow:</Bold></TextBlock>
+        <TextBlock Grid.Column="0" VerticalAlignment="Center" Grid.Row="6">
+            <Bold><Underline>B</Underline>lack:</Bold></TextBlock>
+        <local:CustomSpinner Grid.Column="2" Grid.Row="0" Value="{Binding DataContext.Cyan, RelativeSource={RelativeSource AncestorType=local:CMYK, Mode=FindAncestor}, Mode=TwoWay}"/>
+        <local:CustomSpinner Grid.Column="2" Grid.Row="2" Value="{Binding DataContext.Magenta, RelativeSource={RelativeSource AncestorType=local:CMYK, Mode=FindAncestor}, Mode=TwoWay}"/>
+        <local:CustomSpinner Grid.Column="2" Grid.Row="4" Value="{Binding DataContext.Yellow, RelativeSource={RelativeSource AncestorType=local:CMYK, Mode=FindAncestor}, Mode=TwoWay}"/>
+        <local:CustomSpinner Grid.Column="2" Grid.Row="6" Value="{Binding DataContext.Black, RelativeSource={RelativeSource AncestorType=local:CMYK, Mode=FindAncestor}, Mode=TwoWay}"/>
+        <TextBlock Grid.Column="3" Grid.Row="0" Text="%"/>
+        <TextBlock Grid.Column="3" Grid.Row="2" Text="%"/>
+        <TextBlock Grid.Column="3" Grid.Row="4" Text="%"/>
+        <TextBlock Grid.Column="3" Text="%" Grid.Row="6"/>
+    </Grid>
+</UserControl>

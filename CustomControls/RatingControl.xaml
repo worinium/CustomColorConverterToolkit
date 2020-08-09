@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="CustomControls.RatingControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomControls"
+             mc:Ignorable="d"
+             Name="ratingUserControl">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+            <!-- Displays the text on the Custom controls-->
+        <TextBlock  Grid.ColumnSpan="5" FontSize="40"  HorizontalAlignment="Center" Text="{Binding ElementName=ratingUserControl, Path=RatingValue}"/>
+        <!-- Displays the text on the Custom controls-->
+        <Image Source="/Images/star.png" Grid.Column="0" Grid.Row="1" />
+        <Image Source="/Images/star.png" Grid.Column="1" Grid.Row="1" />
+        <Image Source="/Images/star.png" Grid.Column="2" Grid.Row="1" />
+        <Image Source="/Images/star.png" Grid.Column="3" Grid.Row="1" />
+        <Image Source="/Images/star.png" Grid.Column="4" Grid.Row="1" />
+        
+        <Image Name="starcell1" Source="/Images/fillstar.png" Grid.Column="0" Grid.Row="1" />
+        <Image Name="starcell2" Source="/Images/fillstar.png" Grid.Column="1" Grid.Row="1" />
+        <Image Name="starcell3" Source="/Images/fillstar.png" Grid.Column="2" Grid.Row="1" />
+        <Image Name="starcell4" Source="/Images/fillstar.png" Grid.Column="3" Grid.Row="1" />
+        <Image Name="starcell5" Source="/Images/fillstar.png" Grid.Column="4" Grid.Row="1" />
+        
+    </Grid>
+</UserControl>
