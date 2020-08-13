@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 using ColorPicker.ViewModels;
 using ColorPicker.Views;
 
-namespace ColorPicker
+namespace CustomColorPicker.GUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

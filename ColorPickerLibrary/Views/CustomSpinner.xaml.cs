@@ -36,39 +36,39 @@ namespace ColorPickerLibrary.Views
             }
         }     
 
-        public double Value
+        public int Value
         {
-            get => (double)GetValue(ValueProperty);
+            get => (int)GetValue(ValueProperty);
             set
             {
                 SetValue(ValueProperty, value);
             }
         }
 
-        public static readonly DependencyProperty ValueProperty =  DependencyProperty.Register("Value", typeof(double), typeof(CustomSpinner), new PropertyMetadata(0.0, new PropertyChangedCallback(OnSomeValuePropertyChanged)));
+        public static readonly DependencyProperty ValueProperty =  DependencyProperty.Register("Value", typeof(double), typeof(CustomSpinner), new PropertyMetadata(0, new PropertyChangedCallback(OnSomeValuePropertyChanged)));
 
 
         private static void OnSomeValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             CustomSpinner numericBox = target as CustomSpinner;
-            numericBox.Value = (double)e.NewValue;
+            numericBox.Value = (int)e.NewValue;
         }
 
-        public double Maximum
+        public int Maximum
         {
-            get { return (double)GetValue(MaximumProperty); }
+            get { return (int)GetValue(MaximumProperty); }
             set { SetValue(MaximumProperty, value); }
         }
 
-        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(CustomSpinner), new FrameworkPropertyMetadata(360.0));
+        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(int), typeof(CustomSpinner), new FrameworkPropertyMetadata(360));
 
-        public double Minimum
+        public int Minimum
         {
-            get { return (double)GetValue(MinimumProperty); }
+            get { return (int)GetValue(MinimumProperty); }
             set { SetValue(MinimumProperty, value); }
         }
 
-        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(CustomSpinner), new FrameworkPropertyMetadata(0.0));
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(int), typeof(CustomSpinner), new FrameworkPropertyMetadata(0));
 
         private static readonly RoutedEvent ValueChangedEvent = EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CustomSpinner));
 
@@ -128,7 +128,7 @@ namespace ColorPickerLibrary.Views
                 string input = ColorValue.Text;
                 try
                 {
-                    Value = double.Parse(input);
+                    Value = int.Parse(input);
                     if (Value < Minimum) Value = Minimum;
                     if (Value > Maximum) Value = Maximum;
                     RaiseEvent(new RoutedEventArgs(ValueChangedEvent));

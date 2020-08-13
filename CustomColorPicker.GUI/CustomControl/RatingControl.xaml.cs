@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace CustomControls
+namespace CustomColorPicker.GUI.CustomControl
 {
     /// <summary>
     /// Interaction logic for RatingControl.xaml
@@ -40,6 +30,23 @@ namespace CustomControls
             var ratingControl = d as RatingControl;
             ratingControl.setStarValue((int)e.NewValue);
         }
+
+        public int Maximum
+        {
+            get { return (int)GetValue(MaximumProperty); }
+            set { SetValue(MaximumProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(int), typeof(RatingControl), new FrameworkPropertyMetadata(5));
+
+        public int Minimum
+        {
+            get { return (int)GetValue(MinimumProperty); }
+            set { SetValue(MinimumProperty, value); }
+        }
+
+        public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(int), typeof(RatingControl), new FrameworkPropertyMetadata(1));
+
         public void setStarValue(int value)
         {
             //First star
@@ -67,6 +74,21 @@ namespace CustomControls
                 starcell5.Visibility = Visibility.Visible;
             else
                 starcell5.Visibility = Visibility.Hidden;
+        }
+
+        private void ColorValue_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (ColorValue.Text != string.Empty)
+            {
+                if (e.IsUp && RatingValue <= Minimum)
+                {
+                    RatingValue = 1;
+                }
+                else if (e.IsUp && RatingValue > Maximum)
+                {
+                    RatingValue = 5;
+                }
+            }
         }
     }
 }

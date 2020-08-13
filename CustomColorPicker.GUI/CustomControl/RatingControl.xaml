@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="CustomControls.RatingControl"
+﻿<UserControl x:Class="CustomColorPicker.GUI.CustomControl.RatingControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CustomControls"
+             xmlns:local="clr-namespace:CustomColorPicker.GUI.CustomControl"
              mc:Ignorable="d"
              Name="ratingUserControl">
     <Grid>
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
             <!-- Displays the text on the Custom controls-->
-        <TextBlock  Grid.ColumnSpan="5" FontSize="40"  HorizontalAlignment="Center" Text="{Binding ElementName=ratingUserControl, Path=RatingValue}"/>
+        <TextBox PreviewKeyUp="ColorValue_KeyDown" x:Name="ColorValue" Grid.ColumnSpan="5" FontSize="40"  HorizontalAlignment="Center" Text="{Binding ElementName=ratingUserControl, Path=RatingValue, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxLength="1" />
         <!-- Displays the text on the Custom controls-->
         <Image Source="/Images/star.png" Grid.Column="0" Grid.Row="1" />
         <Image Source="/Images/star.png" Grid.Column="1" Grid.Row="1" />

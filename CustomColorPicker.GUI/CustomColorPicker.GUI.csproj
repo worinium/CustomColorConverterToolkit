@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomControl\RatingControl.xaml.cs">
+      <DependentUpon>RatingControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\TaskFourViewModel.cs" />
     <Compile Include="ViewModels\TaskThreeViewModel.cs" />
@@ -84,6 +87,10 @@
     <Compile Include="Views\TaskTwoWindow.xaml.cs">
       <DependentUpon>TaskTwoWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomControl\RatingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Helpers\Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,6 +177,12 @@
       <Project>{1415d06e-14ce-4b9a-aa99-f1ff5755a2c4}</Project>
       <Name>ColorPickerLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fillstar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

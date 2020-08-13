@@ -11,15 +11,13 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media;
-using ColorPicker.Views;
 using Shared;
 
 namespace CustomColorPicker.GUI.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private Thumb SelectedThumb = null;
+        //private Thumb SelectedThumb = null;
 
         public MainWindowViewModel()
         {
