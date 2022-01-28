@@ -45,9 +45,7 @@ namespace ColorPickerLibrary.Views
             }
         }
 
-        public static readonly DependencyProperty ValueProperty =  DependencyProperty.Register("Value", typeof(double), typeof(CustomSpinner), new PropertyMetadata(0, new PropertyChangedCallback(OnSomeValuePropertyChanged)));
-
-
+        public static readonly DependencyProperty ValueProperty =  DependencyProperty.Register("Value", typeof(int), typeof(CustomSpinner), new PropertyMetadata(0, new PropertyChangedCallback(OnSomeValuePropertyChanged)));
         private static void OnSomeValuePropertyChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             CustomSpinner numericBox = target as CustomSpinner;
@@ -80,7 +78,6 @@ namespace ColorPickerLibrary.Views
 
         //Increase button clicked
         private static readonly RoutedEvent IncreaseClickedEvent = EventManager.RegisterRoutedEvent("IncreaseClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CustomSpinner));
-
         /// <summary>The IncreaseClicked event is called when the Increase button clicked</summary>
         public event RoutedEventHandler IncreaseClicked
         {
@@ -90,7 +87,6 @@ namespace ColorPickerLibrary.Views
 
         //Increase button clicked
         private static readonly RoutedEvent DecreaseClickedEvent = EventManager.RegisterRoutedEvent("DecreaseClicked", RoutingStrategy.Bubble,typeof(RoutedEventHandler), typeof(CustomSpinner));
-
         /// <summary>The DecreaseClicked event is called when the Decrease button clicked</summary>
         public event RoutedEventHandler DecreaseClicked
         {
